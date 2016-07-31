@@ -10,6 +10,10 @@ import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
 
 /**
+ * 1. アイコン、タイトル、詳細メッセージを含む通知を表示してください。=> DONE
+ * 2. アイコン、タイトル、詳細メッセージを含む通知を表示し、
+ * 通知をタップしたら MainActivity ではない新しい Activity を立ち上げるようにしてください（プロジェクトは実習 1 と同じもので良い）。
+ *
  * Created by suino on 2015/02/26.
  */
 public class NotificationActivity extends Activity {
@@ -19,10 +23,10 @@ public class NotificationActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        // アイコン、タイトル、詳細メッセージを含む通知を表示してください。
         // TODO ここで通知を表示する
-//        Intent intent = new Intent(this, SubActivity.class);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        // Intent の準備。明示的 Intent でも、暗黙的 Intent でもどちらでも構わない
+        Intent intent = new Intent(this, FromNotificationActivity.class);
+        PendingIntent activityIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
         Notification notification = builder
@@ -30,6 +34,7 @@ public class NotificationActivity extends Activity {
                 .setContentTitle("通知だヨ！")
                 .setContentText("通知の詳しい内容をここに書きます。")
                 .setSmallIcon(R.drawable.ic_launcher)
+                .setContentIntent(activityIntent)
                 .build();
 
         // 直接インスタンス化せず、Context を経由してインスタンスを取得する
