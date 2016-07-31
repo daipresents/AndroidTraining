@@ -1,10 +1,15 @@
 package jp.mixi.practice.messagingandnotification;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 /**
+ * TODO: 画面に複数のボタンが配置されています。各ボタンのクリックイベントを拾う処理の中で、
+ * コメントに記述された Action を実行させるコードを書き、そのIntentオブジェクトを受け取るためのBroadcastReceiverを作成し、
+ * AndroidManifest に記述してください。
+ *
  * Created by suino on 2015/02/25.
  */
 public class IntentActivity2 extends Activity {
@@ -27,6 +32,9 @@ public class IntentActivity2 extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO ここに、ACTION_FIRST を呼び出す処理を書く
+                Intent intent = new Intent();
+                intent.setAction(ACTION_FIRST);
+                sendBroadcast(intent);
 
             }
         });
@@ -34,6 +42,9 @@ public class IntentActivity2 extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO ここに、ACTION_SECOND を呼び出す処理を書く
+                Intent intent = new Intent();
+                intent.setAction(ACTION_SECOND);
+                sendBroadcast(intent);
 
             }
         });
@@ -41,6 +52,9 @@ public class IntentActivity2 extends Activity {
             @Override
             public void onClick(View v) {
                 // TODO ここに、ACTION_THIRD を呼び出す処理を書く
+                Intent intent = new Intent();
+                intent.setAction(ACTION_THIRD);
+                sendBroadcast(intent);
 
             }
         });
