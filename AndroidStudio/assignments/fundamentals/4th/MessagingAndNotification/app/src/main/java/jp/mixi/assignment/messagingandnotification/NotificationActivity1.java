@@ -28,6 +28,7 @@ public class NotificationActivity1 extends ActionBarActivity {
                 .setContentText("しょうさいめっせーじだよ")
                 // 通知のアイコン
                 .setSmallIcon(R.drawable.ic_launcher)
+                .setTicker("通知だヨ！")
                 .setOnlyAlertOnce(true)
                 .setAutoCancel(true)
                 .build();
