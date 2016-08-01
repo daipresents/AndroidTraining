@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jp.mixi.assignment.messagingandnotification">
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -53,7 +55,7 @@
         </activity>
         <activity
             android:name=".NotificationSubActivity1"
-            android:label="@string/app_name">
+            android:label="Open Sub1">
             <intent-filter>
                 <action android:name="jp.mixi.assignment.messagingandnotification.android.intent.action.VIEW_MY_OWN" />
 
@@ -66,7 +68,7 @@
         </activity>
         <activity
             android:name=".NotificationSubActivity2"
-            android:label="@string/app_name">
+            android:label="Open Sub2">
             <intent-filter>
                 <action android:name="jp.mixi.assignment.messagingandnotification.android.intent.action.VIEW_MY_OWN" />
 
@@ -77,7 +79,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".OpenURLActivity"></activity>
+        <activity android:name=".OpenURLActivity" />
+        <activity android:name=".ShowToastActivity"></activity>
     </application>
 
 </manifest>
