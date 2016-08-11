@@ -96,18 +96,28 @@ public class MainActivity extends Activity {
         // AdapterContextMenuInfoから長押ししたリストアイテムのpositionを取得します
         int position = adapterInfo.position;
 
+        /**
+         * (課題) 課題3のContextMenuにListViewが設定されています。
+         * ContextMenuには追加と削除メニューが定義されています。
+         * 追加をタップしたときは選択されているアイテムを新たなアイテムとしてListViewにデータを追加してください。
+         * 削除をタップしたときは選択されているアイテムを削除するように実装してください。
+         * ヒント:データの追加、削除、表示の更新処理はAdapterで行います。
+         * スクリーンショット
+         */
         // ListViewから長押しされたリストアイテムを取得します
         Book book = (Book) mListView.getItemAtPosition(position);
         // ListViewからセットされているAdapterを取得します
-        // BookArrayAdapter adapter = (BookArrayAdapter) mListView.getAdapter();
+        BookArrayAdapter adapter = (BookArrayAdapter) mListView.getAdapter();
 
         if (item.getItemId() == R.id.DeleteListItem) {
             // TODO:Adapterを使用して長押ししたデータを削除してください
+            adapter.remove(book);
         } else if (item.getItemId() == R.id.AddListItem) {
             // TODO:Adapterを使用して長押ししたデータを追加してください
+            adapter.add(book);
         }
         // TODO:Adapterを使用して表示されているデータを更新してください
-        
+        mListView.setAdapter(adapter);
         return true;
     }
 
