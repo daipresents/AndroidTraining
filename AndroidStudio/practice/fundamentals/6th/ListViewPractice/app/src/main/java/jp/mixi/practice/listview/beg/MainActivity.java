@@ -6,11 +6,23 @@ import android.app.Activity;
 import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * TODO
+ * (実習) カスタマイズしたリストアイテムを表示するで説明したプロジェクトを写経して実行してください。
+ * 余裕がある場合はViewの再利用についてについても試してみて下さい。
+ * 説明したプロジェクトはAndroidTraining/projects/fundamentals/6th/CustomListItemSampleにあります。
+ *
+ * TODO
+ * (実習) 実習1の画面にボタンを配置し、ボタンをタップしたらListViewの先頭を表示するようにして下さい。
+ ヒント:ListView には smoothScrollToPosition メソッドがあります。
+ スクリーンショット
+ */
 public class MainActivity extends Activity {
 
     Activity context;
@@ -27,7 +39,7 @@ public class MainActivity extends Activity {
             list.add("hoge" + i);
         }
 
-        ListView listView = (ListView) findViewById(R.id.ListView);
+        final ListView listView = (ListView) findViewById(R.id.ListView);
         listView.setAdapter(new CustomListItemAdapter(context, list));
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -37,6 +49,13 @@ public class MainActivity extends Activity {
             }
         });
 
+        View buttonForTop = findViewById(R.id.buttonForTop);
+        buttonForTop.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                listView.smoothScrollToPosition(0);
+            }
+        });
     }
 
     @Override
