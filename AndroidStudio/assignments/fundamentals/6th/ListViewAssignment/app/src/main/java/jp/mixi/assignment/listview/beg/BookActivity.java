@@ -8,6 +8,12 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+/**
+ * TODO
+ * (課題) 課題3で作成したListViewをタップしたら、
+ * 次画面に遷移してタップしたアイテムの情報を表示するようにしてください。
+ * スクリーンショット
+ */
 public class BookActivity extends Activity {
 
     @SuppressWarnings("unused")
