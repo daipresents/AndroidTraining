@@ -9,8 +9,15 @@
     tools:context=".MainActivity" >
 
     <TextView
+        android:id="@+id/userId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="userId"
+        android:textSize="50dp"/>
 
+    <ListView
+        android:layout_below="@+id/userId"
+        android:id="@+id/ListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </RelativeLayout>
