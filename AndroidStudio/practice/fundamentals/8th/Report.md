@@ -34,3 +34,43 @@ Practice Report for 2/8
 ### AsyncTask
 
 1. `AsyncTask#doInBackground()` で、TextView の文字を変更するような、UI の処理を実行するとどうなるかを、理由を添えてレポートしてください。
+
+UIスレッドで呼び出せと怒られる。実行するとエラー。
+
+08-14 22:43:56.562 14635-14675/jp.mixi.sample.async.asynctask E/Surface: getSlotFromBufferLocked: unknown buffer: 0x7f1fe201aa20
+08-14 22:43:58.565 14635-14675/jp.mixi.sample.async.asynctask E/Surface: getSlotFromBufferLocked: unknown buffer: 0x7f1fe201b120
+08-14 22:44:00.566 14635-14675/jp.mixi.sample.async.asynctask E/Surface: getSlotFromBufferLocked: unknown buffer: 0x7f1fe201b190
+08-14 22:44:02.569 14635-14675/jp.mixi.sample.async.asynctask E/Surface: getSlotFromBufferLocked: unknown buffer: 0x7f1fe201b270
+08-14 22:44:04.571 14635-14675/jp.mixi.sample.async.asynctask E/Surface: getSlotFromBufferLocked: unknown buffer: 0x7f1fe201b120
+08-14 22:44:04.767 14635-14674/jp.mixi.sample.async.asynctask E/AndroidRuntime: FATAL EXCEPTION: AsyncTask #1
+                                                                                Process: jp.mixi.sample.async.asynctask, PID: 14635
+                                                                                java.lang.RuntimeException: An error occurred while executing doInBackground()
+                                                                                    at android.os.AsyncTask$3.done(AsyncTask.java:309)
+                                                                                    at java.util.concurrent.FutureTask.finishCompletion(FutureTask.java:354)
+                                                                                    at java.util.concurrent.FutureTask.setException(FutureTask.java:223)
+                                                                                    at java.util.concurrent.FutureTask.run(FutureTask.java:242)
+                                                                                    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:234)
+                                                                                    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113)
+                                                                                    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588)
+                                                                                    at java.lang.Thread.run(Thread.java:818)
+                                                                                 Caused by: android.view.ViewRootImpl$CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
+                                                                                    at android.view.ViewRootImpl.checkThread(ViewRootImpl.java:6556)
+                                                                                    at android.view.ViewRootImpl.requestLayout(ViewRootImpl.java:907)
+                                                                                    at android.view.View.requestLayout(View.java:18722)
+                                                                                    at android.view.View.requestLayout(View.java:18722)
+                                                                                    at android.view.View.requestLayout(View.java:18722)
+                                                                                    at android.view.View.requestLayout(View.java:18722)
+                                                                                    at android.widget.RelativeLayout.requestLayout(RelativeLayout.java:360)
+                                                                                    at android.view.View.requestLayout(View.java:18722)
+                                                                                    at android.widget.TextView.checkForRelayout(TextView.java:7172)
+                                                                                    at android.widget.TextView.setText(TextView.java:4342)
+                                                                                    at android.widget.TextView.setText(TextView.java:4199)
+                                                                                    at android.widget.TextView.setText(TextView.java:4174)
+                                                                                    at jp.mixi.sample.async.asynctask.MainActivity$MyAsyncTask.doInBackground(MainActivity.java:84)
+                                                                                    at jp.mixi.sample.async.asynctask.MainActivity$MyAsyncTask.doInBackground(MainActivity.java:43)
+                                                                                    at android.os.AsyncTask$2.call(AsyncTask.java:295)
+                                                                                    at java.util.concurrent.FutureTask.run(FutureTask.java:237)
+                                                                                    at android.os.AsyncTask$SerialExecutor$1.run(AsyncTask.java:234) 
+                                                                                    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1113) 
+                                                                                    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:588) 
+                                                                                    at java.lang.Thread.run(Thread.java:818) 
