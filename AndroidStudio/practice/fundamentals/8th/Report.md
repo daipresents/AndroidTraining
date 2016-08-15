@@ -24,6 +24,13 @@ Practice Report for 2/8
 
 1. サンプルプロジェクト (LoaderSample) に、AsyncTaskLoader のライフサイクルをログに出力する実装が格納されています。このプロジェクトをビルドし、ログがどのように出力されているかをレポートしてください。
 
+08-14 21:30:57.901 25506-25506/jp.mixi.sample.loader V/MainActivity: onCreateLoader
+08-14 21:30:57.903 25506-25506/jp.mixi.sample.loader V/MyAsyncTaskLoader: onStartLoading
+08-14 21:30:57.914 25506-25595/jp.mixi.sample.loader V/MyAsyncTaskLoader: loadInBackground
+08-14 21:30:58.956 25506-25506/jp.mixi.sample.loader V/MyAsyncTaskLoader: deliverResult
+08-14 21:30:58.957 25506-25506/jp.mixi.sample.loader V/MainActivity: onLoadFinished
+
+
 ### AsyncTask
 
 1. `AsyncTask#doInBackground()` で、TextView の文字を変更するような、UI の処理を実行するとどうなるかを、理由を添えてレポートしてください。
