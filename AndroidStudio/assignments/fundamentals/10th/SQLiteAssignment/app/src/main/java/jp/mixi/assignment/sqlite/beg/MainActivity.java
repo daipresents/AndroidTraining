@@ -8,6 +8,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.widget.CursorAdapter;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 
 /**
  * TODO
@@ -57,14 +60,23 @@ public class MainActivity extends Activity {
                 "daipresents"
         };
 
+        /**
+         *  TODO
+         (課題) 2で作成したデータベースを表示する ListView を作成してください。
+         Adapter には SimpleCursorAdapter を使用してください。プロジェクトは2のものを使用してください。
+         */
+        ListView listView = (ListView) findViewById(R.id.ListView);
+
         Cursor cursor = db.query(AndroidCodeName.ANDROID_CODE_NAME_TABLE_NAME, projection, selection, selectionArgs, null, null, null);
-        boolean moveToFirst = cursor.moveToFirst();
-        if (!cursor.isAfterLast()) {
-            long itemId = cursor.getLong(cursor.getColumnIndexOrThrow(AndroidCodeName._ID));
-            Log.v(MainActivity.class.getSimpleName(), "query end: " + String.valueOf(itemId));
-        } else {
-            Log.v(MainActivity.class.getSimpleName(), "no data.");
-        }
+        String[] from = {
+                AndroidCodeName._ID, AndroidCodeName.COLUMN_NAME_ANDROID_CODE_NAME_NAME, AndroidCodeName.COLUMN_NAME_ANDROID_CODE_NAME_VERSION
+        };
+        int[] to = {
+                R.id.id, R.id.name, R.id.version
+        };
+        SimpleCursorAdapter adapter =
+                new SimpleCursorAdapter(this, R.layout.list_android_code_name, cursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
+        listView.setAdapter(adapter);
 
     }
 
