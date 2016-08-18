@@ -3,6 +3,7 @@ package jp.mixi.sample.contentprovider;
 
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,15 +16,25 @@ public class MainActivity extends Activity {
     @SuppressWarnings("unused")
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    Activity mainActivity;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        mainActivity = this;
 
         findViewById(R.id.Insert).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 insert();
+            }
+        });
+
+        findViewById(R.id.Next).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(mainActivity, MainLoaderActivity.class));
             }
         });
     }
@@ -36,8 +47,7 @@ public class MainActivity extends Activity {
             values.put(Book.COLUMN_NAME_BOOK_PUBLISHER, "PUBLISHER" + i);
             values.put(Book.COLUMN_NAME_BOOK_PRICE, "PRICE" + i);
 
-            Uri insert = getContentResolver().insert(Book.CONTENT_URI, values);
-            Log.d(TAG, insert.toString());
+            getContentResolver().insert(Book.CONTENT_URI, values);
         }
     }
 
