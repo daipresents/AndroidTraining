@@ -1,6 +1,7 @@
 
 package jp.mixi.practice.dialog;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
@@ -25,6 +26,9 @@ public class MainActivity extends FragmentActivity {
 
     private void showPracticeDialog() {
         // TODO:ダイアログを表示する処理を実装してください
+        DialogFragment myDialogFragment = new MyDialogFragment();
+        // 引数にFragmentManagerとtagを設定します
+        myDialogFragment.show(getSupportFragmentManager(), "my_dialog_fragment");
     }
 
     @Override
