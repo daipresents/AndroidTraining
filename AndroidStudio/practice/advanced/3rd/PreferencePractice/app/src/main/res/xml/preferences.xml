@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="pref_cat_notification"
+        android:title="新着のお知らせ" >
+        <CheckBoxPreference
+            android:key="pref_cat_notification_setting"
+            android:title="新着お知らせの設定"
+            android:summary="新着お知らせの受信に関する設定を行います"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="pref_cat_address_sync"
+        android:title="連絡先" >
+        <CheckBoxPreference
+            android:key="pref_cat_address_sync_setting"
+            android:title="連絡先の同期設定"
+            android:summary="友人の情報を連絡先と同期できます"/>
+
+        <ListPreference
+            android:defaultValue="15"
+            android:enabled="false"
+            android:dependency="pref_cat_address_sync_setting"
+            android:dialogTitle="自動同期の間隔"
+            android:entries="@array/sync_timing_list"
+            android:entryValues="@array/sync_timing_list_value"
+            android:key="pref_cat_address_sync_sub_timing_list"
+            android:title="自動同期の間隔" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
